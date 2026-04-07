@@ -8,10 +8,13 @@ public class App {
     }
 
     private static void ejecutar(String[] sumandos, String resultado) {
-
         System.out.println("=================================");
-        for (String s : sumandos) {
-            System.out.println("  " + s);
+        for (int i = 0; i < sumandos.length; i++) {
+            if (i == 0) {
+                System.out.println("  " + sumandos[i]);
+            } else {
+                System.out.println("+ " + sumandos[i]);
+            }
         }
         System.out.println("--------");
         System.out.println("  " + resultado);
@@ -21,7 +24,7 @@ public class App {
         ResultadoCriptaritmo res = solver.resolver();
 
         if (!res.tieneSolucion()) {
-            System.out.println("No hay solución");
+            System.out.println("\nNo hay solución");
             return;
         }
 
@@ -32,5 +35,35 @@ public class App {
                 System.out.println(ch + " = " + v);
             }
         }
+
+        System.out.println("\nComprobación:");
+        int sumaTotal = 0;
+
+        for (String s : sumandos) {
+            int valor = convertir(s, res);
+            sumaTotal += valor;
+            System.out.println(s + " = " + valor);
+        }
+
+        int valorResultado = convertir(resultado, res);
+        System.out.println("-----------------");
+        System.out.println(resultado + " = " + valorResultado);
+        System.out.println("Suma total = " + sumaTotal);
+
+        if (sumaTotal == valorResultado) {
+            System.out.println("La solución es correcta.");
+        } else {
+            System.out.println("La solución NO es correcta.");
+        }
+    }
+
+    private static int convertir(String palabra, ResultadoCriptaritmo res) {
+        int numero = 0;
+
+        for (int i = 0; i < palabra.length(); i++) {
+            numero = numero * 10 + res.getValor(palabra.charAt(i));
+        }
+
+        return numero;
     }
 }

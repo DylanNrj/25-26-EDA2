@@ -1,29 +1,53 @@
-# Reto 002 - Criptaritmos
+# Reto 002 - Criptaritmos con recursividad
 
 ## Autor
 Dylan Naranjo
 
-## Problema
-Resolver criptaritmos usando recursividad:
+## Descripción
+Este proyecto resuelve criptaritmos mediante recursividad utilizando backtracking.
 
-- SEND + MORE = MONEY
-- FORTY + TEN + TEN = SIXTY
-- ODD + ODD = EVEN
+Se busca asignar dígitos a letras de forma que la suma sea válida, cumpliendo:
+
+- cada letra representa un dígito distinto
+- no se permiten ceros a la izquierda
+- se consideran los acarreos
+- se valida la suma por columnas
+
+---
+
+## Problemas resueltos
+
+- SEND + MORE = MONEY  
+- FORTY + TEN + TEN = SIXTY  
+- ODD + ODD = EVEN  
+
+---
 
 ## Enfoque
-Se utilizó backtracking recursivo:
 
-- asignación de dígitos a letras
-- validación por columnas
-- control de acarreos
-- poda de soluciones inválidas
-- patrón hacer / deshacer
+Se implementa un algoritmo de **backtracking recursivo** que:
 
-## Estructura
+1. recorre la suma columna por columna (de derecha a izquierda)
+2. asigna dígitos a letras no usadas
+3. valida cada columna con el acarreo
+4. aplica poda si una combinación no cumple
+5. usa patrón hacer / deshacer
+
+---
+
+## Estructura del proyecto
 
 ```bash
-src/
-├── App.java
-├── Criptaritmo.java
-├── SolverCriptaritmo.java
-└── ResultadoCriptaritmo.java
+entregas/naranjoDylan/
+├── README.md
+├── src/
+│   ├── App.java
+│   ├── Criptaritmo.java
+│   ├── SolverCriptaritmo.java
+│   └── ResultadoCriptaritmo.java
+├── modelosUML/
+│   ├── DiagramaClases.puml
+│   └── DiagramaActividad.puml
+├── images/
+│   ├── DiagramaClases.png
+│   └── DiagramaActividad.png
