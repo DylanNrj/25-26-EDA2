@@ -31,12 +31,10 @@ public class SolverCriptaritmo {
 
     private boolean backtrack(int col, int fila, int suma) {
 
-        // Caso base
         if (col == maxLen) {
             return suma == 0;
         }
 
-        // Procesar sumandos
         if (fila < filas) {
             char c = getChar(problema.getSumandos()[fila], col);
 
@@ -58,8 +56,7 @@ public class SolverCriptaritmo {
                 if (d == 0 && noCero[idx]) {
                     continue;
                 }
-
-                // HACER
+                
                 asignacion[idx] = d;
                 usado[d] = true;
 
@@ -67,7 +64,6 @@ public class SolverCriptaritmo {
                     return true;
                 }
 
-                // DESHACER
                 asignacion[idx] = -1;
                 usado[d] = false;
             }
@@ -75,7 +71,6 @@ public class SolverCriptaritmo {
             return false;
         }
 
-        // Verificar resultado
         char r = getChar(problema.getResultado(), col);
         int idx = r - 'A';
 
@@ -96,7 +91,6 @@ public class SolverCriptaritmo {
             return false;
         }
 
-        // HACER
         asignacion[idx] = esperado;
         usado[esperado] = true;
 
@@ -104,7 +98,6 @@ public class SolverCriptaritmo {
             return true;
         }
 
-        // DESHACER
         asignacion[idx] = -1;
         usado[esperado] = false;
 
