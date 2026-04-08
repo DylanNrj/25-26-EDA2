@@ -1,10 +1,9 @@
+package iterativo;
 
 public class App {
 
     public static void main(String[] args) {
         ejecutar(new String[]{"SEND", "MORE"}, "MONEY");
-        ejecutar(new String[]{"FORTY", "TEN", "TEN"}, "SIXTY");
-        ejecutar(new String[]{"ODD", "ODD"}, "EVEN");
     }
 
     private static void ejecutar(String[] sumandos, String resultado) {
@@ -20,7 +19,7 @@ public class App {
         System.out.println("  " + resultado);
 
         Criptaritmo c = new Criptaritmo(sumandos, resultado);
-        SolverCriptaritmo solver = new SolverCriptaritmo(c);
+        SolverCriptaritmoIterativo solver = new SolverCriptaritmoIterativo(c);
         ResultadoCriptaritmo res = solver.resolver();
 
         if (!res.tieneSolucion()) {
@@ -59,11 +58,9 @@ public class App {
 
     private static int convertir(String palabra, ResultadoCriptaritmo res) {
         int numero = 0;
-
         for (int i = 0; i < palabra.length(); i++) {
             numero = numero * 10 + res.getValor(palabra.charAt(i));
         }
-
         return numero;
     }
 }

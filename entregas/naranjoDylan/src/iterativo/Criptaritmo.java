@@ -1,3 +1,5 @@
+package iterativo;
+
 public class Criptaritmo {
 
     private final String[] sumandos;
